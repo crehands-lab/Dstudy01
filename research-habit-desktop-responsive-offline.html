@@ -1,0 +1,1394 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Research Habit">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>Research Habit — Desktop Responsive</title>
+  <style>
+
+:root{
+  --bg:#f4f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafc;
+  --text:#18212f;
+  --muted:#6f7b8a;
+  --line:#e7ecf2;
+  --brand:#5b5ff0;
+  --brand-2:#7c3aed;
+  --accent:#14b8a6;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --shadow:0 16px 40px rgba(28,39,60,.08);
+  --shadow-soft:0 8px 24px rgba(28,39,60,.06);
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Pretendard,"Noto Sans KR",Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(91,95,240,.10), transparent 26%),
+    radial-gradient(circle at top right, rgba(20,184,166,.08), transparent 24%),
+    var(--bg);
+  color:var(--text);
+}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 72px}
+.top{
+  display:flex;justify-content:space-between;gap:24px;align-items:flex-start;
+  padding:24px 26px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#ffffff 0%,#f9fbff 100%);
+  box-shadow:var(--shadow);
+  border:1px solid rgba(231,236,242,.9);
+}
+.brand-lockup{display:flex;gap:16px;align-items:center}
+.logo{
+  width:54px;height:54px;border-radius:18px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;font-weight:800;font-size:20px;
+  box-shadow:0 12px 24px rgba(91,95,240,.25);
+}
+h1{margin:0;font-size:30px;letter-spacing:-.6px}
+.tag{margin-top:6px;color:var(--muted);font-size:13px}
+.header-actions{display:flex;gap:10px;align-items:center}
+.desktop-nav{display:flex;gap:8px;align-items:center;padding:5px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px}
+.desktop-nav button{background:transparent;color:#64748b;box-shadow:none;padding:10px 15px}
+.desktop-nav button.active{background:#2563eb;color:#fff;box-shadow:0 6px 14px rgba(37,99,235,.18)}
+
+.progress-shell{
+  margin:22px 0 18px;
+  padding:12px;
+  border-radius:20px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(231,236,242,.9);
+}
+.progress{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:8px;
+}
+.step{
+  position:relative;
+  padding:12px 10px;
+  border-radius:14px;
+  text-align:center;
+  font-size:11px;
+  font-weight:700;
+  color:#8a95a5;
+  background:#f3f6fa;
+  border:1px solid transparent;
+  transition:.2s ease;
+}
+.step.active{
+  color:#fff;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  box-shadow:0 8px 18px rgba(91,95,240,.20);
+}
+.step .n{
+  display:inline-grid;place-items:center;
+  width:20px;height:20px;border-radius:50%;
+  background:rgba(255,255,255,.16);
+  margin-right:4px;
+}
+
+.card{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(231,236,242,.95);
+  border-radius:var(--radius);
+  padding:26px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow-soft);
+}
+.card.hero{
+  background:linear-gradient(135deg,#fff 0%,#fbfcff 100%);
+}
+.card-head{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px;
+}
+.kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 10px;border-radius:999px;
+  background:rgba(91,95,240,.10);color:var(--brand);
+  font-size:11px;font-weight:800;letter-spacing:.2px;
+  margin-bottom:8px;
+}
+h2{margin:0;font-size:23px;letter-spacing:-.4px}
+h3{font-size:14px;margin:20px 0 9px;color:#465366}
+p{line-height:1.65}
+.tiny{color:var(--muted);font-size:12px;line-height:1.6}
+.helper{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:12px 14px;border-radius:14px;
+  background:#f8fafc;border:1px solid var(--line);
+  color:#5f6c7c;font-size:12px;line-height:1.55;
+  margin-bottom:14px;
+}
+.helper-dot{
+  width:8px;height:8px;border-radius:50%;
+  margin-top:5px;background:var(--accent);flex:0 0 auto;
+}
+
+textarea,input{
+  width:100%;
+  border:1px solid #dfe6ee;
+  border-radius:14px;
+  padding:14px 15px;
+  font-size:14px;
+  color:var(--text);
+  background:#fff;
+  outline:none;
+  transition:.18s ease;
+}
+textarea{min-height:122px;resize:vertical;line-height:1.6}
+textarea:focus,input:focus{
+  border-color:rgba(91,95,240,.65);
+  box-shadow:0 0 0 4px rgba(91,95,240,.08);
+}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.example-row{margin-top:10px}
+.example-row button{width:100%}
+.between{justify-content:space-between;align-items:center}
+button,.file-label{
+  border:0;border-radius:13px;padding:12px 16px;font-size:13px;font-weight:700;cursor:pointer;
+  transition:.18s ease;
+}
+button:hover,.file-label:hover{transform:translateY(-1px)}
+.primary{
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  color:#fff;
+  box-shadow:0 8px 18px rgba(91,95,240,.20);
+}
+.secondary{background:#eef2ff;color:#4f46e5}
+.ghost,.file-label{background:#fff;border:1px solid #dfe6ee;color:#425066}
+.file-label input{display:none}
+
+.hint{
+  background:linear-gradient(180deg,#f8fbff,#f7f9fc);
+  border:1px solid #e6ecf4;
+  border-radius:16px;
+  padding:14px 16px;
+  font-size:13px;line-height:1.65;
+  color:#536172;
+}
+.hint strong{color:var(--text)}
+.saved-counter-list{display:grid;gap:8px;margin-top:12px}
+.saved-counter-item{padding:10px 12px;border:1px solid #dfe6ee;border-radius:12px;background:#f8fafc;font-size:12px;line-height:1.5;color:#465366}
+.saved-counter-item::before{content:"✓";margin-right:7px;color:var(--brand);font-weight:800}
+
+.analysis-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;margin-top:16px;
+}
+.analysis-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  background:linear-gradient(180deg,#fff,#fbfcfe);
+  min-height:96px;
+}
+.analysis-card::after{
+  content:"";
+  position:absolute;left:16px;right:16px;bottom:12px;height:6px;border-radius:999px;
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+  opacity:.18;
+}
+.analysis-card b{display:block;font-size:24px;margin-top:8px}
+.analysis-card .tiny{font-weight:700;color:#667386}
+
+.method-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:12px;
+}
+.method{
+  border:1px solid #e2e8f0;
+  border-radius:18px;
+  padding:16px;
+  cursor:pointer;
+  background:#fff;
+  transition:.18s ease;
+  min-height:116px;
+}
+.method:hover{
+  transform:translateY(-2px);
+  border-color:#cbd5e1;
+  box-shadow:0 10px 24px rgba(30,41,59,.07);
+}
+.method.selected{
+  border-color:rgba(91,95,240,.55);
+  background:linear-gradient(180deg,#f8f8ff,#f5f8ff);
+  box-shadow:0 0 0 3px rgba(91,95,240,.06);
+}
+.method b{display:block;margin-bottom:7px;font-size:14px}
+.scorebox{
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;
+  margin:16px 0;padding:16px;border-radius:18px;
+  background:linear-gradient(135deg,#f5f7ff,#f8fbff);
+  border:1px solid #e4e8f4;
+}
+.score-ring{
+  width:72px;height:72px;border-radius:50%;
+  display:grid;place-items:center;
+  background:conic-gradient(var(--brand) 0deg,#e9edf5 0deg);
+  position:relative;
+}
+.score-ring::after{
+  content:"";position:absolute;inset:8px;border-radius:50%;background:#fff;
+}
+.score-ring span{position:relative;z-index:2;font-weight:800;font-size:18px}
+
+.badge{
+  display:inline-flex;align-items:center;
+  padding:6px 9px;border-radius:999px;
+  background:#f1f5f9;color:#475569;
+  font-size:11px;font-weight:700;margin:2px;
+}
+
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+}
+.compare-panel{
+  border-radius:18px;padding:16px;border:1px solid var(--line);
+  background:#fbfcfe;
+}
+.quote{
+  border:1px dashed #d8e0ea;
+  border-radius:14px;
+  padding:14px;
+  min-height:122px;
+  background:#fff;
+  line-height:1.6;
+  color:#4a5565;
+}
+
+.dashboard-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px
+}
+.metric{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:18px;
+  background:linear-gradient(180deg,#fff,#fbfcfe);
+}
+.metric .label{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.metric .num{font-size:31px;font-weight:800;margin-top:5px}
+.metric:nth-child(1) .num{color:var(--brand)}
+.metric:nth-child(2) .num{color:var(--accent)}
+.metric:nth-child(3) .num{color:#0ea5e9}
+.metric:nth-child(4) .num{color:#f59e0b}
+
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+.toolbar input{max-width:290px}
+.journal-list{display:grid;gap:10px}
+.journal-card{
+  border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff;
+}
+.journal-card:hover{border-color:#d7dee8}
+.journal-meta{font-size:11px;color:var(--muted);margin-bottom:6px}
+
+.bar-wrap{margin:12px 0}
+.bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
+.bar{height:9px;background:#eef2f7;border-radius:999px;overflow:hidden}
+.bar span{
+  display:block;height:100%;
+  background:linear-gradient(90deg,var(--brand),var(--accent));
+  border-radius:999px;
+}
+.chartbox{
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+  background:#fff;
+}
+.bias-summary{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.bias-summary b{font-size:28px;color:var(--brand)}
+.bias-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:11px}
+.bias-legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#14b8a6}
+.bias-legend span:nth-child(2)::before{background:#f59e0b}.bias-legend span:nth-child(3)::before{background:#ef4444}
+canvas{max-width:100%;height:auto}
+footer{display:block;font-size:13px;font-weight:700;color:#46566c;margin-top:28px;padding:18px 14px;text-align:center;background:#fff;border:1px solid #dbe2ea;border-radius:14px;box-shadow:0 6px 18px rgba(30,64,175,.05)}
+.hidden{display:none !important}
+
+@media(max-width:780px){
+  .wrap{padding:16px 12px 52px}
+  .top{padding:20px;border-radius:22px;flex-direction:column}
+  .progress{grid-template-columns:repeat(3,1fr)}
+  .compare{grid-template-columns:1fr}
+  .scorebox{grid-template-columns:1fr}
+  .header-actions{width:100%}
+  .header-actions button{width:100%}
+}
+
+
+.danger-btn{color:#b91c1c;border-color:#fecaca;background:#fff7f7}
+.danger-btn:hover{background:#fef2f2}
+.delete-mini{padding:7px 10px;border-radius:10px;font-size:11px;color:#b91c1c;background:#fff7f7;border:1px solid #fecaca}
+.journal-actions{display:flex;justify-content:flex-end;margin-top:10px}
+
+
+.mobile-home,.bottom-nav{display:none}
+@media(max-width:780px){
+  body{padding-bottom:86px;background:#f6f7fb}
+  .wrap{padding:12px 12px 105px}
+  .top{
+    box-shadow:none;border:none;background:transparent;padding:8px 4px 10px;
+    flex-direction:row;align-items:center;
+  }
+  .brand-lockup .logo{width:40px;height:40px;border-radius:13px;font-size:14px}
+  .brand-lockup h1{font-size:18px}
+  .brand-lockup .tag{display:none}
+  .desktop-dashboard{display:none}
+  .desktop-nav{display:none}
+  .install-btn{padding:9px 11px;font-size:11px}
+  .progress-shell{display:none}
+  .mobile-home{display:block}
+  .mobile-greeting{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    padding:24px 5px 16px;
+  }
+  .mobile-greeting h2{font-size:31px;line-height:1.18;letter-spacing:-1px;margin-top:4px}
+  .streak-pill{
+    white-space:nowrap;padding:8px 10px;border-radius:999px;
+    background:#eef2ff;color:#5558d9;font-size:10px;font-weight:800;
+  }
+  .capture-card{
+    width:100%;display:grid;grid-template-columns:52px 1fr 24px;align-items:center;
+    text-align:left;padding:18px;border-radius:22px;color:#fff;border:0;
+    background:linear-gradient(135deg,#5b5ff0,#7c3aed);
+    box-shadow:0 16px 30px rgba(91,95,240,.22);
+  }
+  .capture-plus{
+    width:42px;height:42px;border-radius:14px;display:grid;place-items:center;
+    background:rgba(255,255,255,.16);font-size:27px;font-weight:300;
+  }
+  .capture-card b{display:block;font-size:17px}
+  .capture-card small{display:block;margin-top:3px;opacity:.78}
+  .capture-arrow{font-size:28px;opacity:.75}
+  .mobile-section-head{
+    display:flex;justify-content:space-between;align-items:center;
+    margin:24px 3px 10px;font-size:13px;
+  }
+  .mobile-section-head button{padding:0;background:none;color:#6b7280;font-size:11px}
+  .challenge-card{
+    width:100%;display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:center;
+    text-align:left;padding:16px;border:1px solid #e5e7eb;border-radius:18px;background:#fff;color:#1f2937;
+    box-shadow:0 7px 20px rgba(31,41,55,.045)
+  }
+  .challenge-icon{
+    width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
+    background:#ecfdf5;color:#0f766e;font-weight:900;font-size:18px;
+  }
+  .challenge-card b{display:block;font-size:13px;line-height:1.45}
+  .challenge-card small{display:block;color:#8490a0;margin-top:4px}
+  .mobile-recent{display:grid;gap:9px}
+  .recent-mobile-card{
+    padding:14px;border:1px solid #e7ecf2;border-radius:17px;background:#fff;
+  }
+  .recent-mobile-card .date{font-size:10px;color:#94a3b8;margin-bottom:5px}
+  .recent-mobile-card b{font-size:13px;line-height:1.45}
+  .recent-mobile-card .score{font-size:10px;color:#5b5ff0;margin-top:6px}
+  #step1,#step2,#step3,#step4,#step5,#step6,#dashboard{border-radius:22px;padding:19px}
+  .bottom-nav{
+    position:fixed;display:grid;grid-template-columns:repeat(3,1fr);
+    left:0;right:0;bottom:0;z-index:1000;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.94);backdrop-filter:blur(18px);
+    border-top:1px solid #e8edf3;
+  }
+  .bottom-nav button{
+    display:flex;flex-direction:column;align-items:center;gap:2px;
+    padding:5px;background:none;color:#8b95a5;font-weight:600;
+  }
+  .bottom-nav button span{font-size:20px;line-height:20px}
+  .bottom-nav button small{font-size:9px}
+  .bottom-nav button.active{color:#5b5ff0}
+footer{display:block;margin:24px 4px 76px;padding:16px 12px;line-height:1.6;font-size:12px}
+}
+
+/* Warm field-journal theme */
+:root{
+  --bg:#f5f0e4;
+  --surface:#fffdf6;
+  --surface-2:#f8f3e7;
+  --text:#24362c;
+  --muted:#718075;
+  --line:#ded8c8;
+  --brand:#2f6b4f;
+  --brand-2:#528463;
+  --accent:#d9a441;
+  --warn:#c77a2d;
+  --danger:#b84b3f;
+  --shadow:0 18px 45px rgba(54,68,54,.09);
+  --shadow-soft:0 8px 25px rgba(54,68,54,.07);
+}
+body{
+  background:
+    radial-gradient(circle at 8% 0%,rgba(217,164,65,.12),transparent 25%),
+    radial-gradient(circle at 94% 9%,rgba(47,107,79,.10),transparent 27%),
+    repeating-linear-gradient(0deg,rgba(73,91,75,.025) 0,rgba(73,91,75,.025) 1px,transparent 1px,transparent 28px),
+    var(--bg);
+}
+.top{background:rgba(255,253,246,.90);border-color:#e2dccd;box-shadow:0 12px 34px rgba(54,68,54,.08)}
+.logo{background:linear-gradient(145deg,#315f49,#6f9674);border-radius:50% 44% 50% 42%;box-shadow:0 10px 22px rgba(47,107,79,.22);font-family:Georgia,serif}
+h1,h2{font-family:Georgia,"Noto Serif KR",serif;color:#243c2f}
+h2{line-height:1.25}
+.tag{color:#788177}
+.progress-shell{background:rgba(255,253,246,.74);border-color:#e3ddce}
+.step{background:#eee9dc;color:#899086;border-radius:9px}
+.step.active{background:#3c7258;box-shadow:0 7px 16px rgba(47,107,79,.18)}
+.card{background:rgba(255,253,246,.97);border-color:#e2dccd;border-radius:16px;box-shadow:var(--shadow-soft);position:relative}
+.card::before{content:"";position:absolute;left:22px;right:22px;top:0;height:3px;border-radius:0 0 5px 5px;background:linear-gradient(90deg,#d9a441,#6f9674);opacity:.55}
+.card.hero{background:linear-gradient(145deg,#fffdf7,#faf5e8)}
+.kicker{background:#e8efe8;color:#35644d;border:1px solid #d5e0d6;letter-spacing:.8px}
+.helper,.hint{background:#f8f3e7;border-color:#e5ddcb;color:#5d6d62}
+.helper-dot{background:#d9a441}
+textarea,input{background:#fffefa;border-color:#d9d3c5;color:#24362c;border-radius:10px}
+textarea{background-image:repeating-linear-gradient(transparent 0,transparent 27px,rgba(74,103,82,.08) 28px)}
+textarea:focus,input:focus{border-color:#6d9577;box-shadow:0 0 0 4px rgba(47,107,79,.09)}
+button,.file-label{border-radius:10px}
+.primary{background:linear-gradient(135deg,#2f6b4f,#527f62);box-shadow:0 7px 16px rgba(47,107,79,.20)}
+.secondary{background:#e8efe8;color:#2f6248}
+.ghost,.file-label{background:#fffdf8;border-color:#d9d3c5;color:#506257}
+.analysis-card,.method,.metric,.journal-card,.compare-panel,.chartbox{background:#fffefa;border-color:#dfd9ca;border-radius:13px}
+.analysis-card::after{background:linear-gradient(90deg,#3f775a,#d9a441)}
+.method.selected{border-color:#6e9578;background:#edf3eb;box-shadow:0 0 0 3px rgba(47,107,79,.07)}
+.scorebox{background:#edf3eb;border-color:#d5e0d5}
+.badge{background:#edf1e8;color:#496553}
+.bar span{background:linear-gradient(90deg,#397254,#d2a23f)}
+.metric:nth-child(1) .num,.metric:nth-child(2) .num,.metric:nth-child(3) .num{color:#397254}
+.metric:nth-child(4) .num{color:#c18728}
+.capture-card{background:linear-gradient(135deg,#346d50,#67916e)!important;box-shadow:0 16px 30px rgba(47,107,79,.20)!important}
+.challenge-icon{background:#f7ecd1!important;color:#9a6b1e!important}
+.streak-pill{background:#e8efe8!important;color:#3b6b50!important}
+.recent-mobile-card{background:#fffdf7!important;border-color:#e2dccd!important}
+.recent-mobile-card .score{color:#3b6b50!important}
+.bottom-nav{background:rgba(255,253,247,.96)!important;border-color:#ded8c8!important}
+.bottom-nav button.active{color:#2f6b4f!important}
+.danger-btn,.delete-mini{color:#a63f35;background:#fff4ef;border-color:#e9c2b8}
+
+/* Clean blue productivity theme */
+:root{--bg:#f6f8fc;--surface:#fff;--surface-2:#f8fafc;--text:#172033;--muted:#68758a;--line:#e2e8f0;--brand:#2563eb;--brand-2:#3b82f6;--accent:#0ea5e9;--warn:#f59e0b;--danger:#dc2626;--shadow:0 16px 42px rgba(30,64,175,.07);--shadow-soft:0 8px 24px rgba(30,64,175,.055);--radius:18px}
+body{background:radial-gradient(circle at 8% -8%,rgba(37,99,235,.09),transparent 27%),radial-gradient(circle at 100% 8%,rgba(14,165,233,.06),transparent 23%),var(--bg)}
+.top{background:rgba(255,255,255,.94);border:1px solid #e6ebf3;border-radius:22px;box-shadow:0 10px 30px rgba(30,64,175,.06)}
+.logo{background:linear-gradient(145deg,#2563eb,#60a5fa);border-radius:15px;box-shadow:0 10px 22px rgba(37,99,235,.22);font-family:inherit}
+h1,h2{font-family:inherit;color:var(--text);font-weight:800}.tag{color:var(--muted)}
+.progress-shell{background:rgba(255,255,255,.8);border-color:#e6ebf3}.step{background:#f1f5f9;color:#8491a4;border-radius:10px}.step.active{background:linear-gradient(135deg,#2563eb,#3b82f6);box-shadow:0 7px 16px rgba(37,99,235,.18)}
+.card{background:rgba(255,255,255,.97);border-color:#e5eaf2;border-radius:18px;box-shadow:var(--shadow-soft)}.card::before{content:none}.card.hero{background:linear-gradient(145deg,#fff,#fbfdff)}
+.kicker{background:#eff6ff;color:#2563eb;border:1px solid #dbeafe;letter-spacing:.5px}.helper,.hint{background:#f8fafc;border-color:#e2e8f0;color:#5f6d80}.helper-dot{background:#38bdf8}
+textarea,input{background:#fff;border-color:#dbe2ea;color:var(--text);border-radius:12px}textarea{background-image:none}textarea:focus,input:focus{border-color:#60a5fa;box-shadow:0 0 0 4px rgba(37,99,235,.08)}
+button,.file-label{border-radius:11px}.primary{background:linear-gradient(135deg,#2563eb,#3b82f6);box-shadow:0 8px 18px rgba(37,99,235,.20)}.secondary{background:#eff6ff;color:#1d4ed8}.ghost,.file-label{background:#fff;border-color:#dbe2ea;color:#46566c}
+.analysis-card,.method,.metric,.journal-card,.compare-panel,.chartbox{background:#fff;border-color:#e2e8f0;border-radius:14px}.analysis-card::after{background:linear-gradient(90deg,#2563eb,#38bdf8)}.method.selected{border-color:#60a5fa;background:#f0f7ff;box-shadow:0 0 0 3px rgba(37,99,235,.07)}
+.scorebox{background:#f2f7ff;border-color:#dbeafe}.badge{background:#eff6ff;color:#315a9d}.bar span{background:linear-gradient(90deg,#2563eb,#38bdf8)}
+.metric:nth-child(1) .num{color:#2563eb}.metric:nth-child(2) .num{color:#0284c7}.metric:nth-child(3) .num{color:#4f46e5}.metric:nth-child(4) .num{color:#d97706}
+.capture-card{background:linear-gradient(135deg,#2563eb,#3b82f6)!important;box-shadow:0 16px 30px rgba(37,99,235,.20)!important}.challenge-icon{background:#eff6ff!important;color:#2563eb!important}.streak-pill{background:#eff6ff!important;color:#2563eb!important}
+.recent-mobile-card{background:#fff!important;border-color:#e4e9f1!important}.recent-mobile-card .score{color:#2563eb!important}.bottom-nav{background:rgba(255,255,255,.96)!important;border-color:#e5eaf2!important}.bottom-nav button.active{color:#2563eb!important}
+.danger-btn,.delete-mini{color:#b91c1c;background:#fff7f7;border-color:#fecaca}
+@media(max-width:780px){body{background:#f7f9fc}.top{background:transparent;border:0;box-shadow:none}.mobile-greeting h2{font-size:29px;letter-spacing:-.8px}#step1,#step2,#step3,#step4,#step5,#step6,#dashboard{padding:21px;border-radius:18px}}
+
+/* Desktop and laptop responsive workspace */
+@media(min-width:781px){
+  .wrap{max-width:1380px;padding:30px 34px 80px}
+  .top{position:sticky;top:16px;z-index:50;align-items:center;padding:18px 24px}
+  .progress-shell{position:sticky;top:108px;z-index:40;box-shadow:0 8px 24px rgba(30,64,175,.05)}
+  .home-view .progress-shell{display:none}
+  .mobile-home{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(340px,.82fr);grid-template-rows:auto auto auto auto;gap:18px;margin-top:24px}
+  .mobile-greeting{grid-column:1/-1;display:flex;justify-content:space-between;align-items:flex-end;padding:34px 38px;border:1px solid #e4eaf3;border-radius:24px;background:linear-gradient(135deg,#fff,#f3f8ff);box-shadow:var(--shadow-soft)}
+  .mobile-greeting h2{font-size:42px;line-height:1.1;margin:6px 0 12px}
+  .streak-pill{white-space:nowrap;padding:11px 15px;border-radius:999px;background:#eff6ff;color:#2563eb;font-size:12px;font-weight:800}
+  .capture-card{grid-column:1;grid-row:2/4;min-height:220px;display:grid;grid-template-columns:74px 1fr 34px;align-items:center;text-align:left;padding:34px;border:0;border-radius:24px;color:#fff}
+  .capture-plus{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:rgba(255,255,255,.17);font-size:38px;font-weight:300}
+  .capture-card b{display:block;font-size:25px}.capture-card small{display:block;margin-top:8px;font-size:14px;opacity:.8}.capture-arrow{font-size:42px;opacity:.75}
+  .mobile-home>.mobile-section-head:nth-of-type(2){grid-column:2;grid-row:2;align-self:end;margin:0 4px;font-size:14px}
+  .challenge-card{grid-column:2;grid-row:3;width:100%;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;text-align:left;padding:24px;border:1px solid #e3e9f2;border-radius:20px;background:#fff;color:var(--text);box-shadow:var(--shadow-soft)}
+  .challenge-icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-weight:900;font-size:22px}.challenge-card b{display:block;font-size:16px;line-height:1.45}.challenge-card small{display:block;color:#7b8798;margin-top:6px}
+  .mobile-home>.mobile-section-head:nth-of-type(3){grid-column:1/-1;grid-row:4;display:flex;justify-content:space-between;align-items:center;margin:10px 4px 0;font-size:14px}
+  .mobile-section-head button{padding:6px 10px;background:#fff;color:#64748b;border:1px solid #e2e8f0;font-size:11px}
+  .mobile-recent{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .recent-mobile-card{min-height:105px;padding:18px;border:1px solid #e4e9f1;border-radius:16px;background:#fff}.recent-mobile-card .date{font-size:11px;color:#94a3b8;margin-bottom:7px}.recent-mobile-card b{font-size:14px;line-height:1.45}.recent-mobile-card .score{font-size:11px;color:#2563eb;margin-top:8px}
+  #step1,#step2,#step3,#step4,#step5,#step6{max-width:980px;margin-left:auto;margin-right:auto;padding:34px 40px}
+  #dashboard{padding:34px 40px}.dashboard-grid{grid-template-columns:repeat(4,1fr)}.toolbar{display:grid;grid-template-columns:minmax(240px,1.4fr) minmax(200px,1fr) repeat(4,auto)}
+  textarea{min-height:150px}.method-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+@media(min-width:781px) and (max-width:1050px){
+  .wrap{padding-left:22px;padding-right:22px}.mobile-home{grid-template-columns:1fr 1fr}.toolbar{grid-template-columns:1fr 1fr repeat(2,auto)}.mobile-recent{grid-template-columns:repeat(2,1fr)}
+}
+
+</style>
+</head>
+<body>
+<noscript><div style="padding:20px;font-family:sans-serif">이 앱은 JavaScript가 필요합니다. 브라우저에서 JavaScript를 허용해주세요.</div></noscript>
+<div class="wrap">
+  <header class="top">
+    <div class="brand-lockup">
+      <div class="logo">RH</div>
+      <div>
+        <h1>Research Habit</h1>
+        <div class="tag">일상의 질문을 구조화하고 검증하는 리서치 워크스페이스</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="ghost install-btn" id="installBtn" style="display:none">앱 설치</button>
+      <nav class="desktop-nav" aria-label="데스크톱 주 메뉴">
+        <button class="active" type="button" data-nav="0" onclick="RH.mobile.home()">홈</button>
+        <button type="button" data-nav="1" onclick="RH.mobile.startResearch()">연구 시작</button>
+        <button type="button" data-nav="2" onclick="RH.ui.showDashboard()">기록</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="progress-shell">
+    <div class="progress">
+      <button class="step active" type="button" onclick="RH.app.goToStep(1)" aria-label="1단계 관찰로 이동"><span class="n">1</span>NOTICE</button>
+      <button class="step" type="button" onclick="RH.app.goToStep(2)" aria-label="2단계 질문으로 이동"><span class="n">2</span>QUESTION</button>
+      <button class="step" type="button" onclick="RH.app.goToStep(3)" aria-label="3단계 방법으로 이동"><span class="n">3</span>METHOD</button>
+      <button class="step" type="button" onclick="RH.app.goToStep(4)" aria-label="4단계 증거로 이동"><span class="n">4</span>EVIDENCE</button>
+      <button class="step" type="button" onclick="RH.app.goToStep(5)" aria-label="5단계 반증으로 이동"><span class="n">5</span>ATTACK</button>
+      <button class="step" type="button" onclick="RH.app.goToStep(6)" aria-label="6단계 생각 수정으로 이동"><span class="n">6</span>CHANGE</button>
+    </div>
+  </div>
+
+  
+  <section class="mobile-home" id="mobileHome">
+    <div class="mobile-greeting">
+      <div>
+        <div class="kicker">RESEARCH HABIT</div>
+        <h2>오늘 무엇이<br>궁금했나요?</h2>
+        <p class="tiny">일상의 작은 의문을 연구자의 질문으로 바꿔보세요.</p>
+      </div>
+      <div class="streak-pill">◉ <span id="mobileCount">0</span> Research</div>
+    </div>
+
+    <button class="capture-card" onclick="RH.mobile.startResearch()">
+      <span class="capture-plus">+</span>
+      <span><b>발견 기록</b><small>30초만에 시작하기</small></span>
+      <span class="capture-arrow">›</span>
+    </button>
+
+    <div class="mobile-section-head"><b>오늘의 Research Challenge</b></div>
+    <button class="challenge-card" onclick="RH.mobile.useChallenge()">
+      <span class="challenge-icon">?</span>
+      <span>
+        <b id="challengeText" aria-live="polite">사람들은 엘리베이터 안에서 어디를 바라볼까?</b>
+        <small>누르면 새로운 관찰 질문이 나옵니다</small>
+      </span>
+    </button>
+
+    <div class="mobile-section-head"><b>최근 연구</b><button onclick="RH.ui.showDashboard()">전체보기</button></div>
+    <div id="mobileRecent" class="mobile-recent"></div>
+  </section>
+
+<section class="card hero hidden" id="step1">
+    <div class="card-head">
+      <div>
+        <div class="kicker">TODAY'S RESEARCH</div>
+        <h2>오늘, 이상하다고 느낀 장면은?</h2>
+      </div>
+    </div>
+    <div class="helper"><span class="helper-dot"></span><span>설명하거나 평가하기 전에, 먼저 <b>본 것과 들은 것</b>만 적어보세요.</span></div>
+    <textarea id="phenomenon" placeholder="예: 점심시간인데도 어떤 카페는 혼자 온 손님이 많았다."></textarea>
+
+    <h3>처음 든 생각</h3>
+    <textarea id="before" placeholder="예: 혼자 온 사람들은 창가 좌석을 더 좋아하는 것 같다."></textarea>
+
+    <div class="row">
+      <button class="primary" onclick="RH.app.toQuestion()">연구질문 만들기</button>
+    </div>
+    <div class="row example-row">
+      <button class="ghost" type="button" onclick="RH.app.loadExample()">예시 불러오기</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="step2">
+    <div class="kicker">QUESTION DESIGN</div>
+    <h2>Research Question</h2>
+    <div id="questionPrompt" class="hint"></div>
+    <h3>내 연구질문</h3>
+    <textarea id="rq" placeholder="무엇을 알아내고 싶은지 직접 질문으로 작성하세요."></textarea>
+    <div class="row">
+      <button class="secondary" onclick="RH.app.analyzeRQ()">RQ 분석</button>
+      <button class="primary" onclick="RH.app.toMethod()">방법 설계하기</button>
+    </div>
+    <div id="rqAnalysis" class="analysis-grid"></div>
+    <h3>Bias Check</h3>
+    <div id="biasCheck" class="hint">질문을 분석하면 선입견, 인과 전제, 과도한 일반화 가능성을 점검합니다.</div>
+    <div class="chartbox" id="biasChartBox" style="margin-top:12px;display:none">
+      <div class="bias-summary"><span>종합 편향 위험도</span><b id="biasScore">0</b><span>/ 100</span></div>
+      <canvas id="biasChart" width="760" height="250" aria-label="연구질문 편향 위험도 그래프"></canvas>
+      <div class="bias-legend"><span>0–29 낮음</span><span>30–59 점검 필요</span><span>60–100 높음</span></div>
+      <div class="tiny" style="margin-top:8px">표현 기반 진단값이며, 연구자의 최종 판단을 대체하지 않습니다. 점수가 높을수록 편향 위험이 큽니다.</div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="step3">
+    <div class="kicker">METHOD COMPOSER</div>
+    <h2>어떻게 알아볼까요?</h2>
+    <div class="helper"><span class="helper-dot"></span><span>한 가지 방법보다 <b>서로 다른 종류의 증거</b>를 조합하면 연구가 강해집니다.</span></div>
+    <div id="questionTypeBadge"></div>
+    <div class="method-grid" id="methodGrid"></div>
+    <div class="scorebox">
+      <div class="score-ring" id="scoreRing"><span id="methodFit">0</span></div>
+      <div>
+        <b>Method Fit</b>
+        <div id="methodCoach" class="tiny" style="margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="row">
+      <button class="primary" onclick="RH.app.toEvidence()">미니리서치 설계</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="step4">
+    <div class="kicker">MICRO RESEARCH</div>
+    <h2>작게 조사하고, 정확하게 기록하기</h2>
+    <div id="mission" class="hint"></div>
+    <h3>증거 기록</h3>
+    <textarea id="evidence" placeholder="관찰한 사실, 들은 말, 숫자, 예외를 기록하세요."></textarea>
+    <h3>현재 결론</h3>
+    <textarea id="conclusion" placeholder="현재 증거만으로 말할 수 있는 수준의 결론을 적으세요."></textarea>
+    <div class="row">
+      <button class="primary" onclick="RH.app.toAttack()">내 결론 공격하기</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="step5">
+    <div class="kicker">COUNTEREVIDENCE</div>
+    <h2>Attack My Idea</h2>
+    <div class="helper"><span class="helper-dot"></span><span>좋은 연구는 자기 결론을 지키는 능력보다, <b>스스로 무너뜨려 보는 능력</b>에서 강해집니다.</span></div>
+    <div id="counterCoach" class="hint"></div>
+    <textarea id="counterAnswer" placeholder="반례, 다른 설명, 빠진 변수, 표본의 한계를 적어보세요."></textarea>
+    <div class="row">
+      <button class="ghost" type="button" onclick="RH.app.saveCurrentCounterAnswer()">이 답변 저장</button>
+    </div>
+    <div id="savedCounterAnswers" class="saved-counter-list" aria-live="polite"></div>
+    <div class="row">
+      <button class="secondary" onclick="RH.app.nextCounter()">다른 공격 질문</button>
+      <button class="primary" onclick="RH.app.toChange()">생각 수정하기</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="step6">
+    <div class="kicker">REFLECTION</div>
+    <h2>Mind Changed?</h2>
+    <div class="compare">
+      <div class="compare-panel">
+        <h3>Before</h3>
+        <div id="beforeView" class="quote"></div>
+      </div>
+      <div class="compare-panel">
+        <h3>After</h3>
+        <textarea id="after" placeholder="조사 후 생각이 어떻게 바뀌었는지 적으세요."></textarea>
+      </div>
+    </div>
+    <h3>태그</h3>
+    <input id="recordTags" placeholder="예: UX, 고령자, 카페">
+    <div class="row">
+      <button class="primary" onclick="RH.app.saveResearch()">연구 저장</button>
+      <button class="secondary" onclick="RH.app.reset()">새 연구 시작</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="dashboard">
+    <div class="row between" style="margin-top:0">
+      <div>
+        <div class="kicker">MY RESEARCH PROFILE</div>
+        <h2>Research Dashboard</h2>
+      </div>
+      <button class="ghost" onclick="RH.ui.hideDashboard()">닫기</button>
+    </div>
+
+    <div class="dashboard-grid" style="margin-top:16px">
+      <div class="metric"><div class="label">Total Research</div><div class="num" id="mTotal">0</div></div>
+      <div class="metric"><div class="label">This Month</div><div class="num" id="mMonth">0</div></div>
+      <div class="metric"><div class="label">Methods Used</div><div class="num" id="mMethods">0</div></div>
+      <div class="metric"><div class="label">Mind Changed</div><div class="num" id="mChanged">0</div></div>
+    </div>
+
+    <h3>Research Profile</h3>
+    <div id="profileBars"></div>
+
+    <h3>기록 검색</h3>
+    <div class="toolbar">
+      <input id="searchRecords" placeholder="질문·현상·결론·답변 검색" oninput="RH.dashboard.renderJournal()">
+      <input id="tagFilter" placeholder="태그 검색 (# 없이 입력)" oninput="RH.dashboard.renderJournal()">
+      <button class="primary" type="button" onclick="RH.dashboard.runSearch()">검색</button>
+      <button class="ghost" onclick="RH.dashboard.sort='new';RH.dashboard.renderJournal()">최신순</button>
+      <button class="ghost" onclick="RH.dashboard.sort='old';RH.dashboard.renderJournal()">오래된순</button>
+      <button class="ghost" type="button" onclick="document.getElementById('searchRecords').value='';document.getElementById('tagFilter').value='';RH.dashboard.renderJournal();document.getElementById('searchRecords').focus()">검색 초기화</button>
+    </div>
+    <div id="searchResultCount" class="tiny" style="margin-top:8px"></div>
+    <div id="availableTags" style="margin-top:8px"></div>
+    <div id="journalList" class="journal-list" style="margin-top:12px"></div>
+
+    <h3>질문 성장 그래프</h3>
+    <div class="chartbox"><canvas id="growthChart" width="760" height="260"></canvas></div>
+
+    <h3>데이터 관리</h3>
+    <div class="row">
+      <button class="primary" onclick="RH.dashboard.downloadPNG()">통계 이미지 PNG</button>
+      <button class="secondary" onclick="RH.dashboard.printPDF()">대시보드 PDF</button>
+      <button class="secondary" onclick="RH.storage.exportJSON()">JSON 내보내기</button>
+      <button class="secondary" onclick="RH.storage.exportCSV()">CSV 내보내기</button>
+      <button class="secondary" onclick="RH.storage.exportTXT()">전체 TXT 내보내기</button>
+      <button class="ghost" onclick="RH.storage.downloadBackup()">전체 백업</button>
+      <button class="ghost danger-btn" onclick="RH.storage.clearAll()">전체 기록 삭제</button>
+      <label class="file-label">백업 불러오기
+        <input type="file" accept=".json,application/json" onchange="RH.storage.importBackup(event)">
+      </label>
+    </div>
+    <div id="dataStatus" class="hint" style="margin-top:14px">기록은 이 브라우저에 저장됩니다.</div>
+  </section>
+
+  <nav class="bottom-nav">
+    <button class="active" onclick="RH.mobile.home()"><span>⌂</span><small>홈</small></button>
+    <button onclick="RH.mobile.startResearch()"><span>＋</span><small>연구</small></button>
+    <button onclick="RH.ui.showDashboard()"><span>▤</span><small>기록</small></button>
+  </nav>
+  <footer>© 2026 metain.site. All rights reserved.</footer>
+</div>
+
+
+
+<script>
+
+window.RH = window.RH || {};
+RH.methods = [
+ {id:"observation",name:"Observation",desc:"실제 행동과 상황을 본다",evidence:["behavior","context"],fit:["exploratory","descriptive","comparative"]},
+ {id:"interview",name:"Interview",desc:"이유·경험·의미를 듣는다",evidence:["meaning","experience"],fit:["exploratory","explanatory"]},
+ {id:"survey",name:"Survey",desc:"분포와 빈도를 확인한다",evidence:["scale","pattern"],fit:["descriptive","comparative"]},
+ {id:"desk",name:"Desk Research",desc:"기존 자료·통계·문헌을 확인한다",evidence:["existing","trend"],fit:["descriptive","comparative","explanatory"]},
+ {id:"diary",name:"Diary Study",desc:"시간에 따른 변화를 기록한다",evidence:["time","experience"],fit:["exploratory","descriptive"]},
+ {id:"shadow",name:"Shadowing",desc:"행동의 전체 흐름을 따라간다",evidence:["behavior","process"],fit:["exploratory","explanatory"]},
+ {id:"thinkaloud",name:"Think Aloud",desc:"수행 중 생각을 말하게 한다",evidence:["cognition","behavior"],fit:["exploratory","explanatory"]},
+ {id:"ab",name:"A/B Test",desc:"두 조건의 결과 차이를 비교한다",evidence:["causal","comparison"],fit:["causal","comparative"]},
+ {id:"experiment",name:"Experiment",desc:"조건을 통제해 인과 가능성을 본다",evidence:["causal"],fit:["causal"]},
+ {id:"prototype",name:"Prototype Test",desc:"해결안을 만들어 사용 반응을 본다",evidence:["design","behavior"],fit:["exploratory","comparative","causal"]},
+ {id:"contextual",name:"Contextual Inquiry",desc:"맥락 속 행동과 이유를 함께 본다",evidence:["behavior","meaning","context"],fit:["exploratory","explanatory"]},
+ {id:"focus",name:"Focus Group",desc:"집단 상호작용 속 인식과 논리를 본다",evidence:["meaning","social"],fit:["exploratory","comparative"]}
+];
+
+RH.questionTypes = [
+ {id:"exploratory",label:"탐색",patterns:["경험","어떻게","무엇","어떤","의미","느끼"]},
+ {id:"descriptive",label:"기술",patterns:["얼마나","빈도","패턴","실제로","분포"]},
+ {id:"comparative",label:"비교",patterns:["차이","비교","더","덜","집단","지역별","연령별"]},
+ {id:"explanatory",label:"설명",patterns:["왜","이유","원인","어떻게 발생"]},
+ {id:"causal",label:"인과",patterns:["영향","효과","때문","증가시키","감소시키","관계가 있는가"]}
+];
+
+
+window.RH = window.RH || {};
+RH.storage = {
+ // 배포용 새 파일은 기존 브라우저 기록과 분리된 빈 저장공간에서 시작한다.
+ key:"researchHabitRecords_clean_v2",
+ get(){
+   try{return JSON.parse(localStorage.getItem(this.key)||"[]")}catch(e){return[]}
+ },
+ set(v){localStorage.setItem(this.key,JSON.stringify(v))},
+ save(record){
+   const arr=this.get(); arr.unshift(record); this.set(arr.slice(0,1000)); return arr.length;
+ },
+ download(name,mime,text){
+   const blob=new Blob([text],{type:mime}); const url=URL.createObjectURL(blob);
+   const a=document.createElement("a"); a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),500);
+ },
+ exportJSON(){
+   const records=this.get();
+   this.download(`research_habit_${new Date().toISOString().slice(0,10)}.json`,"application/json;charset=utf-8",JSON.stringify({app:"Research Habit",version:"1.0",records},null,2));
+   RH.ui.status(`JSON 내보내기 완료: ${records.length}개`);
+ },
+ exportCSV(){
+   const records=this.get(), headers=["created_at","phenomenon","research_question","question_type","rq_score","bias_score","method_fit","methods","evidence","conclusion","counter_answers","counterevidence","before","after","tags"];
+   const esc=v=>'"'+String(Array.isArray(v)?v.map(x=>typeof x==="object"?`${x.question}: ${x.answer}`:x).join(" + "):(v??"")).replace(/"/g,'""')+'"';
+   const lines=[headers.join(","),...records.map(r=>headers.map(h=>esc(r[h])).join(","))];
+   this.download(`research_habit_${new Date().toISOString().slice(0,10)}.csv`,"text/csv;charset=utf-8","\ufeff"+lines.join("\n"));
+   RH.ui.status(`CSV 내보내기 완료: ${records.length}개`);
+ },
+ exportTXT(){
+   const records=this.get();
+   const line="=".repeat(72);
+   const text = records.length ? records.map((r,i)=>{
+     const date = r.created_at ? new Date(r.created_at).toLocaleString("ko-KR") : "";
+     return [
+       line,
+       `RESEARCH HABIT #${i+1}`,
+       line,
+       `날짜: ${date}`,
+       `태그: ${(r.tags||[]).join(", ")}`,
+       "",
+       "[관찰 현상]",
+       r.phenomenon || "",
+       "",
+       "[연구 질문]",
+       r.research_question || "",
+       `질문 유형: ${r.question_type || ""}`,
+       `RQ Score: ${r.rq_score ?? ""}`,
+       `Method Fit: ${r.method_fit ?? ""}`,
+       "",
+       "[연구 방법]",
+       (r.methods||[]).join(" + "),
+       "",
+       "[처음 생각 / Before]",
+       r.before || "",
+       "",
+       "[증거]",
+       r.evidence || "",
+       "",
+       "[현재 결론]",
+       r.conclusion || "",
+       "",
+       "[공격 질문별 답변]",
+       (r.counter_answers||[]).map(x=>`Q. ${x.question}\nA. ${x.answer}`).join("\n\n"),
+       "",
+       "[반증 / 다른 설명]",
+       r.counterevidence || "",
+       "",
+       "[수정된 생각 / After]",
+       r.after || "",
+       ""
+     ].join("\n");
+   }).join("\n") : "저장된 연구기록이 없습니다.";
+   this.download(`research_habit_journal_${new Date().toISOString().slice(0,10)}.txt`,"text/plain;charset=utf-8","\ufeff"+text);
+   RH.ui.status(`전체 TXT 내보내기 완료: ${records.length}개`);
+ },
+ exportOneTXT(id){
+   const r=this.get().find(x=>x.id===id);
+   if(!r){RH.ui.status("기록을 찾을 수 없습니다.",false);return;}
+   const date = r.created_at ? new Date(r.created_at).toLocaleString("ko-KR") : "";
+   const text = [
+     "RESEARCH HABIT",
+     "=".repeat(72),
+     `날짜: ${date}`,
+     `태그: ${(r.tags||[]).join(", ")}`,
+     "",
+     "[관찰 현상]", r.phenomenon || "",
+     "",
+     "[연구 질문]", r.research_question || "",
+     `질문 유형: ${r.question_type || ""}`,
+     `RQ Score: ${r.rq_score ?? ""}`,
+     `Method Fit: ${r.method_fit ?? ""}`,
+     "",
+     "[연구 방법]", (r.methods||[]).join(" + "),
+     "",
+     "[처음 생각 / Before]", r.before || "",
+     "",
+     "[증거]", r.evidence || "",
+     "",
+     "[현재 결론]", r.conclusion || "",
+     "",
+     "[공격 질문별 답변]", (r.counter_answers||[]).map(x=>`Q. ${x.question}\nA. ${x.answer}`).join("\n\n"),
+     "",
+     "[반증 / 다른 설명]", r.counterevidence || "",
+     "",
+     "[수정된 생각 / After]", r.after || ""
+   ].join("\n");
+   const safe=(r.research_question||"research").replace(/[\\/:*?"<>|]/g,"_").slice(0,40);
+   this.download(`${safe||"research"}.txt`,"text/plain;charset=utf-8","\ufeff"+text);
+   RH.ui.status("개별 TXT 내보내기 완료");
+ },
+ downloadBackup(){
+   const data={app:"Research Habit",version:"1.0",backup_type:"full",exported_at:new Date().toISOString(),records:this.get()};
+   this.download(`research_habit_backup_${new Date().toISOString().slice(0,10)}.json`,"application/json;charset=utf-8",JSON.stringify(data,null,2));
+   RH.ui.status("전체 백업 완료");
+ },
+ importBackup(event){
+   const f=event.target.files?.[0]; if(!f)return;
+   const reader=new FileReader();
+   reader.onload=()=>{
+     try{
+       const data=JSON.parse(reader.result); if(!Array.isArray(data.records))throw new Error("records가 없습니다.");
+       this.set(data.records); RH.ui.status(`백업 복원 완료: ${data.records.length}개`); RH.dashboard.refresh();
+     }catch(e){RH.ui.status("복원 실패: "+e.message,false)}
+     event.target.value="";
+   };
+   reader.readAsText(f,"utf-8");
+ },
+ deleteById(id){
+   const records=this.get();
+   const rec=records.find(r=>r.id===id);
+   const title=(rec?.research_question || rec?.phenomenon || "이 연구기록");
+   if(!confirm(`"${title}" 기록을 삭제할까요?\n삭제 후에는 백업이 없으면 복구할 수 없습니다.`)) return;
+   const next=records.filter(r=>r.id!==id);
+   this.set(next);
+   RH.app.clearDraft();
+   RH.ui.status(`연구기록 1개를 삭제했습니다. 현재 ${next.length}개가 남아 있습니다.`);
+   RH.dashboard.refresh();
+ },
+ clearAll(){
+   const records=this.get();
+   if(!records.length){RH.ui.status("삭제할 연구기록이 없습니다."); return;}
+   if(!confirm(`저장된 연구기록 ${records.length}개를 모두 삭제할까요?\n이 작업은 되돌릴 수 없습니다.`)) return;
+   if(!confirm("정말 전체 삭제하시겠습니까? 필요한 경우 먼저 '전체 백업'을 내려받으세요.")) return;
+   this.set([]);
+   RH.app.clearDraft();
+   RH.ui.status("모든 연구기록을 삭제했습니다.");
+   RH.dashboard.refresh();
+ }
+};
+
+
+window.RH = window.RH || {};
+RH.state = {selected:new Set(), counterAnswers:new Map(), questionType:null, rqScore:0, biasScore:0, biasDimensions:[], methodFit:0, counterIndex:0};
+RH.dashboard = {sort:"new"};
+
+RH.ui = {
+ activeStep:1,
+ isMobile(){return window.matchMedia("(max-width: 780px)").matches},
+ setNav(index){
+   document.querySelectorAll(".bottom-nav button").forEach((b,i)=>b.classList.toggle("active",i===index));
+   document.querySelectorAll(".desktop-nav button[data-nav]").forEach(b=>b.classList.toggle("active",Number(b.dataset.nav)===index));
+ },
+ step(n){
+   this.activeStep=n;
+   document.body.classList.remove("home-view");
+   document.getElementById("dashboard").classList.add("hidden");
+   document.getElementById("mobileHome")?.classList.add("hidden");
+   document.querySelectorAll(".step").forEach((e,i)=>e.classList.toggle("active",i===n-1));
+   for(let i=1;i<=6;i++)document.getElementById("step"+i).classList.toggle("hidden",i!==n);
+   this.setNav(1);
+   window.scrollTo({top:0,behavior:"smooth"});
+ },
+ showDashboard(){
+   document.body.classList.remove("home-view");
+   for(let i=1;i<=6;i++)document.getElementById("step"+i)?.classList.add("hidden");
+   document.getElementById("mobileHome")?.classList.add("hidden");
+   document.getElementById("dashboard").classList.remove("hidden");
+   this.setNav(2);RH.dashboard.refresh();window.scrollTo({top:0,behavior:"smooth"});
+ },
+ hideDashboard(){
+   document.getElementById("dashboard").classList.add("hidden");
+   RH.mobile.home();
+ },
+ status(msg,good=true){const e=document.getElementById("dataStatus");if(e){e.textContent=msg;e.style.borderLeftColor=good?"#0f766e":"#92400e"}},
+ esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+};
+
+RH.engine = {
+ classifyRQ(rq){
+   let best={id:"exploratory",label:"탐색",score:0};
+   RH.questionTypes.forEach(t=>{
+     const score=t.patterns.reduce((a,p)=>a+(rq.includes(p)?1:0),0);
+     if(score>best.score)best={...t,score};
+   });
+   return best;
+ },
+ rqMetrics(rq){
+   const clarity=Math.min(100,35+(rq.length>=20?20:0)+(rq.length>=35?15:0)+(/[?？]$/.test(rq)?10:0)+(rq.length<=90?20:5));
+   const researchable=Math.min(100,30+(/어떻게|왜|얼마나|차이|영향|경험|행동|선호|변화|비교/.test(rq)?35:10)+(/사람|고령자|학생|고객|사용자|지역|집단|기간|상황/.test(rq)?20:5)+(/좋다|나쁘다|최고|문제다/.test(rq)?0:15));
+   const neutrality=100-this.biasAnalysis(rq).score;
+   const scope=Math.min(100,40+(rq.length>=25?20:0)+(rq.length<=80?20:0)+(/사람|집단|지역|연령|상황|기간/.test(rq)?20:0));
+   const methodLink=Math.min(100,35+(/비교|관찰|경험|행동|영향|변화|빈도|패턴/.test(rq)?40:10)+(/어떻게|왜|얼마나/.test(rq)?20:0));
+   const overall=Math.round((clarity+researchable+neutrality+scope+methodLink)/5);
+   return {clarity,researchable,neutrality,scope,methodLink,overall};
+ },
+ biasAnalysis(rq){
+   const text=String(rq||"").replace(/\s+/g," ").trim();
+   const hit=(re)=>re.test(text);
+   const dimensions=[
+    {key:"leading",label:"유도·결론 전제",risk:(hit(/분명|당연|확실|틀림없이|왜\s*.*(?:때문|탓)|(?:때문|탓)이다|라는 사실|하지 않는가/)?70:0)+(hit(/정말|역시|결국/)?20:0)},
+    {key:"generalization",label:"과잉 일반화",risk:(hit(/모두|누구나|항상|절대|전부|예외 없이|요즘 사람들/)?65:0)+(hit(/사람들은|대부분|일반적으로|보통/)?25:0)},
+    {key:"value",label:"가치·낙인 표현",risk:(hit(/좋다|나쁘다|옳다|그르다|문제다|실패|무능|이기적|비정상|잘못/)?70:0)+(hit(/바람직|우수|열등|정상적/)?25:0)},
+    {key:"causal",label:"인과 선결정",risk:hit(/영향|효과|원인|때문|탓|초래|유발/)?(hit(/비교|조건|전후|실험|통제|무작위|대조/)?20:60):0},
+    {key:"scope",label:"대상·범위 불명확",risk:(hit(/사람|고령자|학생|고객|사용자|참여자|집단|지역|연령|기간|상황|에서|동안/)?0:45)+(text.length<15?25:0)}
+   ].map(d=>({...d,risk:Math.max(0,Math.min(100,d.risk))}));
+   // 한 항목의 극단값이 평균에 묻히지 않도록 평균 70%와 최대값 30%를 결합한다.
+   const mean=dimensions.reduce((a,d)=>a+d.risk,0)/dimensions.length;
+   const score=Math.round(mean*.7+Math.max(...dimensions.map(d=>d.risk))*.3);
+   return {score,dimensions};
+ },
+ biasFlags(rq){
+   const result=this.biasAnalysis(rq), flags=[];
+   if(/때문이다|분명|당연/.test(rq))flags.push("결론을 질문 안에 미리 넣었을 가능성이 있습니다.");
+   if(/모두|항상|절대|요즘 사람들/.test(rq))flags.push("과도한 일반화 가능성이 있습니다.");
+   if(/좋다|나쁘다|문제다|실패/.test(rq))flags.push("가치판단이 질문에 섞여 있을 수 있습니다.");
+   if(/영향|효과|때문/.test(rq) && !/비교|조건|전후|실험/.test(rq))flags.push("인과를 묻고 있지만 비교·조건 설계가 아직 드러나지 않습니다.");
+   if(result.dimensions.find(d=>d.key==="scope").risk>=45)flags.push("연구 대상·장소·기간 중 하나 이상을 구체화하세요.");
+   return flags.length?flags:["뚜렷한 표현상 편향 신호는 적습니다. 그래도 대안 설명을 반드시 남겨두세요."];
+ },
+ methodFit(typeId, selected){
+   if(!selected.length)return {score:0,msg:"최소 하나의 방법을 선택하세요."};
+   let base=0; const evid=new Set();
+   selected.forEach(id=>{
+     const m=RH.methods.find(x=>x.id===id); if(!m)return;
+     if(m.fit.includes(typeId))base+=28; else base+=12;
+     m.evidence.forEach(e=>evid.add(e));
+   });
+   const diversity=Math.min(30,evid.size*7);
+   let score=Math.min(100,base+diversity);
+   let msg="질문유형과 방법이 연결되어 있습니다.";
+   if(typeId==="explanatory" && !evid.has("behavior") && !evid.has("existing"))msg="이유만 듣지 말고 실제 행동 또는 기존 자료를 함께 보세요.";
+   if(typeId==="causal" && !evid.has("causal")){score=Math.min(score,55);msg="인과질문에는 비교·실험적 증거가 필요합니다."}
+   if(selected.length===1)msg+=" 한 종류의 증거에만 의존하고 있습니다.";
+   if(evid.has("behavior")&&evid.has("meaning"))msg="행동(What)과 이유(Why)를 함께 볼 수 있는 강한 조합입니다.";
+   return {score,msg};
+ },
+ counterQuestions(typeId){
+   const common=[
+    "현재 결론을 설명할 수 있는 다른 원인은 무엇입니까?",
+    "표본이 달라지면 결론이 바뀔 가능성은 없습니까?",
+    "당신이 보고 싶었던 것만 본 것은 아닙니까?",
+    "현재 증거로 어디까지 말할 수 있고, 어디부터는 과장입니까?"
+   ];
+   const by={
+    causal:["두 현상이 함께 나타났다고 해서 원인이라고 말할 수 있습니까?","제3의 변수가 둘 모두에 영향을 준 것은 아닙니까?"],
+    explanatory:["인터뷰에서 말한 이유와 실제 행동이 다를 가능성은 없습니까?"],
+    comparative:["두 집단이 비교 가능한 조건인지 확인했습니까?"],
+    descriptive:["관찰한 빈도가 전체를 대표한다고 볼 근거가 있습니까?"],
+    exploratory:["예상하지 못한 사례를 충분히 찾았습니까?"]
+   };
+   return [...(by[typeId]||[]),...common];
+ }
+};
+
+RH.app = {
+ goToStep(n){
+   if(n===1)return RH.ui.step(1);
+   if(!document.getElementById("phenomenon").value.trim())return alert("먼저 1단계에서 관찰한 현상을 적어주세요.");
+   if(n===2)return this.toQuestion();
+   if(!document.getElementById("rq").value.trim())return alert("먼저 2단계에서 연구질문을 작성해주세요.");
+   if(n===3)return this.toMethod();
+   if(!RH.state.selected.size)return alert("먼저 3단계에서 연구 방법을 선택해주세요.");
+   if(n===4)return this.toEvidence();
+   if(!document.getElementById("evidence").value.trim())return alert("먼저 4단계에서 증거를 기록해주세요.");
+   if(n===5)return this.toAttack();
+   if(n===6)return this.toChange();
+ },
+ clearDraft(){
+   ["phenomenon","before","rq","evidence","conclusion","counterAnswer","after","recordTags"].forEach(id=>{
+     const e=document.getElementById(id);if(e)e.value="";
+   });
+   RH.state={selected:new Set(),counterAnswers:new Map(),questionType:null,rqScore:0,biasScore:0,biasDimensions:[],methodFit:0,counterIndex:0};
+   const analysis=document.getElementById("rqAnalysis");if(analysis)analysis.innerHTML="";
+   const bias=document.getElementById("biasCheck");if(bias)bias.textContent="질문을 분석하면 선입견, 인과 전제, 과도한 일반화 가능성을 점검합니다.";
+   const biasBox=document.getElementById("biasChartBox");if(biasBox)biasBox.style.display="none";
+   const typeBadge=document.getElementById("questionTypeBadge");if(typeBadge)typeBadge.innerHTML="";
+   const grid=document.getElementById("methodGrid");if(grid)grid.innerHTML="";
+   const fit=document.getElementById("methodFit");if(fit)fit.textContent="0";
+   const coach=document.getElementById("methodCoach");if(coach)coach.textContent="";
+   const savedAnswers=document.getElementById("savedCounterAnswers");if(savedAnswers)savedAnswers.innerHTML="";
+   const ring=document.getElementById("scoreRing");if(ring)ring.style.background="conic-gradient(var(--brand) 0deg,#e9edf5 0deg)";
+   ["questionPrompt","mission","counterCoach","beforeView"].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=""});
+ },
+ loadExample(){
+   const phenomenon=document.getElementById("phenomenon");
+   const before=document.getElementById("before");
+   if(!phenomenon||!before)return;
+   if((phenomenon.value.trim()||before.value.trim())&&!confirm("작성 중인 내용을 예시로 바꿀까요?"))return;
+   phenomenon.value="점심시간에 카페에 혼자 오는 손님이 많았다.";
+   before.value="혼자 온 손님들은 창가나 구석 자리를 더 선호하는 것 같다.";
+   phenomenon.focus();
+ },
+ toQuestion(){
+   const p=document.getElementById("phenomenon").value.trim(); if(!p)return alert("현상을 적어주세요.");
+   document.getElementById("questionPrompt").textContent=`현상: ${p} — 무엇을 '알아내고' 싶은지 직접 질문으로 바꿔보세요.`;
+   RH.ui.step(2);
+ },
+ analyzeRQ(){
+   const rq=document.getElementById("rq").value.trim(); if(!rq)return alert("연구질문을 작성하세요.");
+   const t=RH.engine.classifyRQ(rq), m=RH.engine.rqMetrics(rq); RH.state.questionType=t; RH.state.rqScore=m.overall;
+   document.getElementById("rqAnalysis").innerHTML=[
+    ["Overall",m.overall],["명확성",m.clarity],["조사가능성",m.researchable],["중립성",m.neutrality],["범위",m.scope],["방법연결성",m.methodLink]
+   ].map(x=>`<div class="analysis-card"><span class="tiny">${x[0]}</span><b>${x[1]}</b></div>`).join("");
+   const bias=RH.engine.biasAnalysis(rq); RH.state.biasScore=bias.score; RH.state.biasDimensions=bias.dimensions;
+   const level=bias.score<30?"낮음":bias.score<60?"점검 필요":"높음";
+   document.getElementById("biasCheck").innerHTML=`<b>Bias Check · ${level}</b><br>`+RH.engine.biasFlags(rq).map(x=>"• "+RH.ui.esc(x)).join("<br>");
+   document.getElementById("biasChartBox").style.display="block";
+   document.getElementById("biasScore").textContent=bias.score;
+   RH.app.renderBiasChart(bias.dimensions);
+ },
+ renderBiasChart(dimensions){
+   const c=document.getElementById("biasChart"),ctx=c.getContext("2d"),cssWidth=c.parentElement.clientWidth-28;
+   c.width=Math.max(320,Math.round(cssWidth)); c.height=250;
+   const L=Math.min(150,Math.max(105,c.width*.23)),R=48,T=15,row=43,W=c.width-L-R;
+   ctx.clearRect(0,0,c.width,c.height);ctx.font="12px sans-serif";ctx.textBaseline="middle";
+   dimensions.forEach((d,i)=>{
+     const y=T+i*row;
+     ctx.fillStyle="#465366";ctx.fillText(d.label,4,y+10);
+     ctx.fillStyle="#eef2f7";ctx.fillRect(L,y,W,20);
+     ctx.fillStyle=d.risk<30?"#38bdf8":d.risk<60?"#f59e0b":"#dc2626";ctx.fillRect(L,y,W*d.risk/100,20);
+     ctx.fillStyle="#334155";ctx.textAlign="right";ctx.fillText(String(d.risk),c.width-5,y+10);ctx.textAlign="left";
+   });
+ },
+ toMethod(){
+   this.analyzeRQ();
+   const grid=document.getElementById("methodGrid"); grid.innerHTML="";
+   document.getElementById("questionTypeBadge").innerHTML=`<span class="badge">질문유형: ${RH.state.questionType.label}</span>`;
+   RH.methods.forEach(m=>{
+     const d=document.createElement("div"); d.className="method"; d.dataset.id=m.id;
+     d.innerHTML=`<b>${m.name}</b><div class="tiny">${m.desc}</div>`;
+     d.onclick=()=>{RH.state.selected.has(m.id)?RH.state.selected.delete(m.id):RH.state.selected.add(m.id);this.renderMethods()};
+     grid.appendChild(d);
+   });
+   this.renderMethods(); RH.ui.step(3);
+ },
+ renderMethods(){
+   document.querySelectorAll(".method").forEach(e=>e.classList.toggle("selected",RH.state.selected.has(e.dataset.id)));
+   const fit=RH.engine.methodFit(RH.state.questionType?.id||"exploratory",[...RH.state.selected]); RH.state.methodFit=fit.score;
+   document.getElementById("methodFit").textContent=fit.score; document.getElementById("methodCoach").textContent=fit.msg;
+ },
+ toEvidence(){
+   if(!RH.state.selected.size)return alert("방법을 선택하세요.");
+   const names=[...RH.state.selected].map(id=>RH.methods.find(m=>m.id===id).name);
+   document.getElementById("mission").innerHTML=`<b>질문</b><br>${RH.ui.esc(document.getElementById("rq").value)}<br><br><b>방법</b><br>${names.join(" + ")}<br><br><b>원칙</b><br>사실과 해석을 분리하고, 예상과 다른 사례를 최소 1개 찾으세요.`;
+   RH.ui.step(4);
+ },
+ toAttack(){
+   if(!document.getElementById("evidence").value.trim())return alert("증거를 기록하세요.");
+   RH.state.counterIndex=0; this.renderSavedCounterAnswers(); this.showCounter(); RH.ui.step(5);
+ },
+ showCounter(){
+   const qs=RH.engine.counterQuestions(RH.state.questionType?.id||"exploratory");
+   const current=qs[RH.state.counterIndex%qs.length];
+   document.getElementById("counterCoach").textContent=current;
+   document.getElementById("counterAnswer").value=RH.state.counterAnswers.get(current)||"";
+ },
+ currentCounterQuestion(){
+   const qs=RH.engine.counterQuestions(RH.state.questionType?.id||"exploratory");
+   return qs[RH.state.counterIndex%qs.length];
+ },
+ saveCurrentCounterAnswer(silent=false){
+   const q=this.currentCounterQuestion();
+   const answer=document.getElementById("counterAnswer").value.trim();
+   if(!answer){if(!silent)alert("답변을 작성하세요.");return false;}
+   RH.state.counterAnswers.set(q,answer);this.renderSavedCounterAnswers();
+   if(!silent)alert("이 질문의 답변을 저장했습니다.");
+   return true;
+ },
+ renderSavedCounterAnswers(){
+   const box=document.getElementById("savedCounterAnswers");if(!box)return;
+   const saved=[...RH.state.counterAnswers.entries()];
+   box.innerHTML=saved.length?saved.map(([q,a])=>`<div class="saved-counter-item"><b>${RH.ui.esc(q)}</b><br>${RH.ui.esc(a)}</div>`).join(""):"";
+ },
+ nextCounter(){this.saveCurrentCounterAnswer(true);RH.state.counterIndex++;this.showCounter()},
+ toChange(){
+   this.saveCurrentCounterAnswer(true);
+   document.getElementById("beforeView").textContent=document.getElementById("before").value||"처음 생각 미작성";
+   RH.ui.step(6);
+ },
+ saveResearch(){
+   const rec={
+    id:"rh_"+Date.now(),created_at:new Date().toISOString(),
+    phenomenon:document.getElementById("phenomenon").value.trim(),
+    research_question:document.getElementById("rq").value.trim(),
+    question_type:RH.state.questionType?.id||"",
+    rq_score:RH.state.rqScore,bias_score:RH.state.biasScore||0,bias_dimensions:RH.state.biasDimensions||[],method_fit:RH.state.methodFit,
+    methods:[...RH.state.selected].map(id=>RH.methods.find(m=>m.id===id).name),
+    evidence:document.getElementById("evidence").value.trim(),
+    conclusion:document.getElementById("conclusion").value.trim(),
+    counter_answers:[...RH.state.counterAnswers.entries()].map(([question,answer])=>({question,answer})),
+    counterevidence:[...RH.state.counterAnswers.values()].join("\n\n"),
+    before:document.getElementById("before").value.trim(),
+    after:document.getElementById("after").value.trim(),
+    tags:document.getElementById("recordTags").value.split(",").map(x=>x.trim()).filter(Boolean)
+   };
+   RH.storage.save(rec);
+   this.clearDraft();
+   RH.dashboard.refresh();RH.mobile?.refresh();
+   alert("연구가 저장되었습니다.");
+   if(RH.ui.isMobile())RH.mobile.home();else RH.ui.step(1);
+ },
+ reset(){
+   this.clearDraft();RH.ui.step(1);
+ }
+};
+
+RH.dashboard.refresh=function(){
+ const records=RH.storage.get(), now=new Date();
+ const month=records.filter(r=>{const d=new Date(r.created_at);return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()}).length;
+ const methods=new Set(records.flatMap(r=>r.methods||[])), changed=records.filter(r=>r.before&&r.after&&r.before!==r.after).length;
+ ["mTotal","mMonth","mMethods","mChanged"].forEach((id,i)=>document.getElementById(id).textContent=[records.length,month,methods.size,changed][i]);
+ const avg=(key)=>records.length?Math.round(records.reduce((a,r)=>a+(Number(r[key])||0),0)/records.length):0;
+ const prof=[["질문 설계",avg("rq_score")],["방법 적합성",avg("method_fit")],["증거 기록",records.length?Math.round(records.filter(r=>(r.evidence||"").length>30).length/records.length*100):0],["반증·수정",records.length?Math.round(changed/records.length*100):0]];
+ document.getElementById("profileBars").innerHTML=prof.map(([n,v])=>`<div class="bar-wrap"><div class="bar-label"><span>${n}</span><span>${v}</span></div><div class="bar"><span style="width:${v}%"></span></div></div>`).join("");
+ RH.dashboard.renderTagMenu(records);RH.dashboard.renderJournal(); RH.dashboard.chart(records);
+};
+RH.dashboard.renderTagMenu=function(records=RH.storage.get()){
+ const box=document.getElementById("availableTags");if(!box)return;
+ const tags=[...new Set(records.flatMap(r=>r.tags||[]).map(t=>String(t).trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko"));
+ box.innerHTML=tags.length?`<span class="tiny">저장된 태그: </span>${tags.map(t=>`<button class="badge" type="button" onclick="RH.dashboard.filterTag('${encodeURIComponent(t).replace(/'/g,"%27")}')">#${RH.ui.esc(t)}</button>`).join("")}`:`<span class="tiny">저장된 태그가 없습니다.</span>`;
+};
+RH.dashboard.renderJournal=function(){
+ const normalize=v=>String(v??"").normalize("NFKC").toLowerCase().replace(/#/g," ").replace(/\s+/g," ").trim();
+ const queryTerms=normalize(document.getElementById("searchRecords")?.value).split(" ").filter(Boolean);
+ const tagTerms=normalize(document.getElementById("tagFilter")?.value).split(/[ ,]+/).filter(Boolean);
+ let arr=[...RH.storage.get()].filter(r=>{
+  const text=normalize([r.phenomenon,r.research_question,r.question_type,r.evidence,r.conclusion,r.counterevidence,r.before,r.after,(r.methods||[]).join(" "),(r.counter_answers||[]).map(x=>`${x.question} ${x.answer}`).join(" "),(r.tags||[]).join(" ")].join(" "));
+  const tags=(r.tags||[]).map(normalize);
+  const contentMatch=queryTerms.length>0&&queryTerms.every(term=>text.includes(term));
+  const tagMatch=tagTerms.length>0&&tagTerms.every(term=>tags.some(tag=>tag.includes(term)));
+  if(queryTerms.length&&tagTerms.length)return contentMatch&&tagMatch;
+  if(queryTerms.length)return contentMatch;
+  if(tagTerms.length)return tagMatch;
+  return true;
+ });
+ arr.sort((a,b)=>RH.dashboard.sort==="old"?new Date(a.created_at)-new Date(b.created_at):new Date(b.created_at)-new Date(a.created_at));
+ const count=document.getElementById("searchResultCount");if(count){const mode=queryTerms.length&&tagTerms.length?"본문+태그":queryTerms.length?"본문":tagTerms.length?"태그":"전체";count.textContent=`${mode} 검색 결과 ${arr.length}건 / 전체 ${RH.storage.get().length}건`}
+ document.getElementById("journalList").innerHTML=arr.length?arr.map(r=>`<div class="journal-card"><div class="journal-meta">${new Date(r.created_at).toLocaleDateString("ko-KR")} · RQ ${r.rq_score||0} · Fit ${r.method_fit||0}</div><b>${RH.ui.esc(r.research_question||r.phenomenon)}</b><div>${(r.tags||[]).map(t=>`<button class="badge" type="button" onclick="RH.dashboard.filterTag('${encodeURIComponent(t).replace(/'/g,"%27")}')">#${RH.ui.esc(t)}</button>`).join("")}</div><div class="tiny">${RH.ui.esc(r.conclusion||"결론 미작성")}</div>${(r.counter_answers||[]).length?`<div class="tiny" style="margin-top:8px"><b>공격 질문별 답변</b><br>${r.counter_answers.map(x=>`Q. ${RH.ui.esc(x.question)}<br>A. ${RH.ui.esc(x.answer)}`).join("<br><br>")}</div>`:""}<div class="journal-actions"><button class="primary" style="padding:7px 10px;font-size:11px" onclick="RH.dashboard.loadRecord('${r.id}')">불러오기</button><button class="ghost" style="padding:7px 10px;font-size:11px" onclick="RH.storage.exportOneTXT('${r.id}')">TXT</button><button class="delete-mini" onclick="RH.storage.deleteById('${r.id}')">삭제</button></div></div>`).join(""):"<div class='tiny'>검색 조건에 맞는 기록이 없습니다.</div>";
+};
+RH.dashboard.runSearch=function(){
+ RH.dashboard.renderJournal();
+ document.getElementById("journalList")?.scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+RH.dashboard.clearSearch=function(){
+ const q=document.getElementById("searchRecords"),tag=document.getElementById("tagFilter");
+ if(q)q.value="";if(tag)tag.value="";RH.dashboard.renderJournal();if(q)q.focus();
+};
+RH.dashboard.filterTag=function(encoded){
+ const tag=document.getElementById("tagFilter");if(tag)tag.value=decodeURIComponent(encoded);this.renderJournal();
+};
+RH.dashboard.loadRecord=function(id){
+ const r=RH.storage.get().find(x=>x.id===id);if(!r)return alert("기록을 찾을 수 없습니다.");
+ RH.app.clearDraft();
+ const values={phenomenon:r.phenomenon,before:r.before,rq:r.research_question,evidence:r.evidence,conclusion:r.conclusion,counterAnswer:r.counterevidence,after:r.after,recordTags:(r.tags||[]).join(", ")};
+ Object.entries(values).forEach(([id,value])=>{const e=document.getElementById(id);if(e)e.value=value||""});
+ RH.state.questionType=RH.questionTypes.find(x=>x.id===r.question_type)||null;
+ RH.state.rqScore=Number(r.rq_score)||0;RH.state.biasScore=Number(r.bias_score)||0;RH.state.biasDimensions=r.bias_dimensions||[];RH.state.methodFit=Number(r.method_fit)||0;
+ RH.state.selected=new Set((r.methods||[]).map(name=>RH.methods.find(m=>m.name===name)?.id).filter(Boolean));
+ RH.state.counterAnswers=new Map((r.counter_answers||[]).map(x=>[x.question,x.answer]));
+ document.getElementById("questionPrompt").textContent=`불러온 연구질문: ${r.research_question||"질문 미작성"}`;
+ RH.ui.step(2);alert("저장된 연구 내용을 불러왔습니다. 저장하면 새 연구기록으로 추가됩니다.");
+};
+RH.dashboard.chart=function(records){
+ const c=document.getElementById("growthChart"),ctx=c.getContext("2d"),cssWidth=c.parentElement.clientWidth-28;
+ c.width=Math.max(320,Math.round(cssWidth));c.height=260;ctx.clearRect(0,0,c.width,c.height);
+ const arr=[...records].sort((a,b)=>new Date(a.created_at)-new Date(b.created_at)).slice(-30),L=42,T=18,W=c.width-58,H=c.height-50;
+ ctx.font="11px sans-serif";ctx.lineWidth=1;ctx.fillStyle="#64748b";
+ [0,25,50,75,100].forEach(v=>{const y=T+H-v/100*H;ctx.strokeStyle="#e7ecf2";ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(L+W,y);ctx.stroke();ctx.fillText(v,8,y+4)});
+ if(!arr.length){ctx.fillText("저장된 연구기록이 없습니다.",L+20,T+35);return}
+ const points=arr.map((r,i)=>({x:L+(arr.length===1?W/2:i/(arr.length-1)*W),y:T+H-Math.max(0,Math.min(100,Number(r.rq_score)||0))/100*H}));
+ ctx.strokeStyle="#2563eb";ctx.lineWidth=3;ctx.lineJoin="round";ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p.x,p.y):ctx.moveTo(p.x,p.y));ctx.stroke();
+ ctx.fillStyle="#2563eb";points.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,3.5,0,Math.PI*2);ctx.fill()});
+};
+
+RH.dashboard.downloadPNG=function(){
+ const records=RH.storage.get(),canvas=document.createElement("canvas"),ctx=canvas.getContext("2d");
+ canvas.width=1200;canvas.height=1180;ctx.fillStyle="#f5f7fb";ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle="#172033";ctx.font="700 38px sans-serif";ctx.fillText("Research Dashboard",60,75);
+ ctx.fillStyle="#64748b";ctx.font="18px sans-serif";ctx.fillText(new Date().toLocaleString("ko-KR")+" 기준",60,110);
+ const metrics=[
+  ["Total Research",document.getElementById("mTotal")?.textContent||"0"],
+  ["This Month",document.getElementById("mMonth")?.textContent||"0"],
+  ["Methods Used",document.getElementById("mMethods")?.textContent||"0"],
+  ["Mind Changed",document.getElementById("mChanged")?.textContent||"0"]
+ ];
+ metrics.forEach(([label,value],i)=>{const x=60+i*275;ctx.fillStyle="#fff";ctx.fillRect(x,145,245,135);ctx.fillStyle="#64748b";ctx.font="17px sans-serif";ctx.fillText(label,x+20,182);ctx.fillStyle="#2563eb";ctx.font="700 48px sans-serif";ctx.fillText(value,x+20,246)});
+ ctx.fillStyle="#172033";ctx.font="700 24px sans-serif";ctx.fillText("질문 성장 그래프",60,335);
+ const source=document.getElementById("growthChart");if(source)ctx.drawImage(source,60,365,1080,370);
+ ctx.fillStyle="#172033";ctx.font="700 24px sans-serif";ctx.fillText("최근 연구",60,790);
+ const wrap=(text,x,y,maxWidth,lineHeight,maxLines=2)=>{const chars=[...String(text||"")];let line="",lines=0;for(const ch of chars){if(ctx.measureText(line+ch).width>maxWidth){ctx.fillText(line,x,y+lines*lineHeight);line=ch;if(++lines>=maxLines)return;}else line+=ch}if(lines<maxLines)ctx.fillText(line,x,y+lines*lineHeight)};
+ records.slice(0,5).forEach((r,i)=>{const y=835+i*60;ctx.fillStyle="#fff";ctx.fillRect(60,y-30,1080,50);ctx.fillStyle="#334155";ctx.font="16px sans-serif";ctx.fillText(new Date(r.created_at).toLocaleDateString("ko-KR"),78,y);ctx.font="700 17px sans-serif";wrap(r.research_question||r.phenomenon,210,y,880,22,1)});
+ if(!records.length){ctx.fillStyle="#64748b";ctx.font="18px sans-serif";ctx.fillText("저장된 연구기록이 없습니다.",60,845)}
+ canvas.toBlob(blob=>{if(blob)RH.storage.download(`research_dashboard_${new Date().toISOString().slice(0,10)}.png`,"image/png",blob)},"image/png");
+};
+
+RH.dashboard.printPDF=function(){
+ const records=RH.storage.get(),metrics=["mTotal","mMonth","mMethods","mChanged"].map(id=>document.getElementById(id)?.textContent||"0");
+ const chart=document.getElementById("growthChart")?.toDataURL("image/png")||"";
+ const entries=records.map((r,i)=>`<article><h2>${i+1}. ${RH.ui.esc(r.research_question||r.phenomenon||"제목 없는 연구")}</h2><p class="meta">${new Date(r.created_at).toLocaleString("ko-KR")} · RQ ${r.rq_score||0} · Fit ${r.method_fit||0}</p><p><b>현상</b><br>${RH.ui.esc(r.phenomenon||"")}</p><p><b>결론</b><br>${RH.ui.esc(r.conclusion||"")}</p>${(r.counter_answers||[]).length?`<p><b>공격 질문별 답변</b><br>${r.counter_answers.map(x=>`Q. ${RH.ui.esc(x.question)}<br>A. ${RH.ui.esc(x.answer)}`).join("<br><br>")}</p>`:""}<p><b>수정된 생각</b><br>${RH.ui.esc(r.after||"")}</p></article>`).join("");
+ const w=window.open("","_blank");if(!w)return alert("팝업이 차단되었습니다. 이 사이트의 팝업을 허용한 뒤 다시 눌러주세요.");
+ w.document.write(`<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>Research Dashboard</title><style>@page{size:A4;margin:14mm}body{font-family:Arial,sans-serif;color:#172033;margin:0}header{border-bottom:3px solid #2563eb;padding-bottom:12px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}.metric{border:1px solid #dbe2ea;padding:12px;border-radius:8px}.metric b{display:block;font-size:25px;color:#2563eb;margin-top:6px}.chart{width:100%;border:1px solid #e5eaf2;margin:10px 0 20px}article{break-inside:avoid;border-top:1px solid #dbe2ea;padding:14px 0}h1{margin:0}h2{font-size:17px}.meta{color:#64748b;font-size:12px}p{font-size:13px;line-height:1.55}</style></head><body><header><h1>Research Dashboard</h1><div>${new Date().toLocaleString("ko-KR")} 기준</div></header><div class="metrics"><div class="metric">Total Research<b>${metrics[0]}</b></div><div class="metric">This Month<b>${metrics[1]}</b></div><div class="metric">Methods Used<b>${metrics[2]}</b></div><div class="metric">Mind Changed<b>${metrics[3]}</b></div></div>${chart?`<h2>질문 성장 그래프</h2><img class="chart" src="${chart}">`:""}<h2>연구일지</h2>${entries||"<p>저장된 연구기록이 없습니다.</p>"}<script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script></body></html>`);
+ w.document.close();
+};
+
+document.addEventListener("DOMContentLoaded",()=>RH.dashboard.refresh());
+
+</script>
+<script>
+  const _renderMethods = RH.app.renderMethods.bind(RH.app);
+  RH.app.renderMethods = function(){
+    _renderMethods();
+    const fit = Number(document.getElementById("methodFit")?.textContent || 0);
+    const ring = document.getElementById("scoreRing");
+    if(ring){
+      const deg = Math.max(0, Math.min(100, fit))*3.6;
+      ring.style.background = `conic-gradient(var(--brand) ${deg}deg,#e9edf5 ${deg}deg)`;
+    }
+  }
+</script>
+<script>
+
+RH.mobile = {
+ challenges:[
+   "사람들은 엘리베이터 안에서 어디를 바라볼까?",
+   "카페에서 혼자 온 사람은 어떤 자리를 선택할까?",
+   "사람들은 횡단보도 신호를 기다릴 때 무엇을 할까?",
+   "편의점에서 고객이 가장 오래 머무는 곳은 어디일까?",
+   "회의에서 누가 가장 먼저 말하기 시작할까?",
+   "버스나 지하철에서 사람들은 빈자리를 어떻게 고를까?",
+   "처음 온 공간에서 사람들은 무엇을 가장 먼저 확인할까?",
+   "줄을 서는 사람들은 앞사람과 어느 정도 거리를 둘까?",
+   "식당에서 메뉴를 고를 때 사람들은 무엇을 오래 볼까?",
+   "공공장소에서 기다리는 사람들은 손을 어디에 둘까?",
+   "비가 오기 시작하면 사람들의 걷는 방식은 어떻게 달라질까?",
+   "두 사람이 대화할 때 침묵을 먼저 깨는 사람은 누구일까?",
+   "사람들은 문을 통과한 뒤 어느 방향으로 먼저 움직일까?",
+   "공유 공간에서 자리를 떠날 때 무엇을 정리할까?",
+   "안내문 앞에서 사람들은 얼마나 오래 머무를까?"
+ ],
+ refresh(){
+   const records=RH.storage.get();
+   const c=document.getElementById("mobileCount"); if(c)c.textContent=records.length;
+   const list=document.getElementById("mobileRecent");
+   if(list){
+     const recent=records.slice(0,3);
+     list.innerHTML=recent.length?recent.map(r=>`<div class="recent-mobile-card"><div class="date">${new Date(r.created_at).toLocaleDateString("ko-KR")}</div><b>${RH.ui.esc(r.research_question||r.phenomenon||"제목 없는 연구")}</b><div class="score">RQ ${r.rq_score||0} · Fit ${r.method_fit||0}</div></div>`).join(""):`<div class="recent-mobile-card"><div class="tiny">아직 저장된 연구가 없습니다. 첫 발견을 기록해보세요.</div></div>`;
+   }
+   const q=this.challenges[new Date().getDate()%this.challenges.length];
+   const el=document.getElementById("challengeText");if(el)el.textContent=q;
+ },
+ startResearch(){
+   RH.app.clearDraft();
+   document.getElementById("mobileHome")?.classList.add("hidden");
+   RH.ui.step(1);
+   document.getElementById("step1")?.scrollIntoView({behavior:"smooth"});
+ },
+ home(){
+   document.body.classList.add("home-view");
+   for(let i=1;i<=6;i++)document.getElementById("step"+i)?.classList.add("hidden");
+   document.getElementById("dashboard")?.classList.add("hidden");
+   document.getElementById("mobileHome")?.classList.remove("hidden");
+   RH.ui.setNav(0);this.refresh();window.scrollTo({top:0,behavior:"smooth"});
+ },
+ useChallenge(){
+   const el=document.getElementById("challengeText");
+   if(!el)return;
+   const choices=this.challenges.filter(q=>q!==el.textContent);
+   el.textContent=choices[Math.floor(Math.random()*choices.length)]||this.challenges[0];
+ }
+};
+
+let deferredInstallPrompt=null;
+window.addEventListener("beforeinstallprompt",(e)=>{
+  e.preventDefault();deferredInstallPrompt=e;
+  const b=document.getElementById("installBtn");if(b)b.style.display="inline-block";
+});
+document.getElementById("installBtn")?.addEventListener("click",async()=>{
+  if(!deferredInstallPrompt)return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt=null;
+  document.getElementById("installBtn").style.display="none";
+});
+window.addEventListener("appinstalled",()=>{const b=document.getElementById("installBtn");if(b)b.style.display="none"});
+
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+}
+document.addEventListener("DOMContentLoaded",()=>{
+  RH.mobile.refresh();
+  RH.mobile.home();
+});
+
+</script>
+</body>
+</html>
