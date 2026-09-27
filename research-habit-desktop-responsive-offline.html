@@ -7,10 +7,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Research Habit">
-  <link rel="manifest" href="manifest.webmanifest">
   <title>Research Habit — Desktop Responsive</title>
   <style>
-
 :root{
   --bg:#f4f7fb;
   --surface:#ffffff;
@@ -61,7 +59,6 @@ h1{margin:0;font-size:30px;letter-spacing:-.6px}
 .desktop-nav{display:flex;gap:8px;align-items:center;padding:5px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:14px}
 .desktop-nav button{background:transparent;color:#64748b;box-shadow:none;padding:10px 15px}
 .desktop-nav button.active{background:#2563eb;color:#fff;box-shadow:0 6px 14px rgba(37,99,235,.18)}
-
 .progress-shell{
   margin:22px 0 18px;
   padding:12px;
@@ -98,7 +95,6 @@ h1{margin:0;font-size:30px;letter-spacing:-.6px}
   background:rgba(255,255,255,.16);
   margin-right:4px;
 }
-
 .card{
   background:rgba(255,255,255,.94);
   border:1px solid rgba(231,236,242,.95);
@@ -135,7 +131,6 @@ p{line-height:1.65}
   width:8px;height:8px;border-radius:50%;
   margin-top:5px;background:var(--accent);flex:0 0 auto;
 }
-
 textarea,input{
   width:100%;
   border:1px solid #dfe6ee;
@@ -169,7 +164,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 .secondary{background:#eef2ff;color:#4f46e5}
 .ghost,.file-label{background:#fff;border:1px solid #dfe6ee;color:#425066}
 .file-label input{display:none}
-
 .hint{
   background:linear-gradient(180deg,#f8fbff,#f7f9fc);
   border:1px solid #e6ecf4;
@@ -182,7 +176,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 .saved-counter-list{display:grid;gap:8px;margin-top:12px}
 .saved-counter-item{padding:10px 12px;border:1px solid #dfe6ee;border-radius:12px;background:#f8fafc;font-size:12px;line-height:1.5;color:#465366}
 .saved-counter-item::before{content:"✓";margin-right:7px;color:var(--brand);font-weight:800}
-
 .analysis-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -204,7 +197,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 }
 .analysis-card b{display:block;font-size:24px;margin-top:8px}
 .analysis-card .tiny{font-weight:700;color:#667386}
-
 .method-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
@@ -246,14 +238,12 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
   content:"";position:absolute;inset:8px;border-radius:50%;background:#fff;
 }
 .score-ring span{position:relative;z-index:2;font-weight:800;font-size:18px}
-
 .badge{
   display:inline-flex;align-items:center;
   padding:6px 9px;border-radius:999px;
   background:#f1f5f9;color:#475569;
   font-size:11px;font-weight:700;margin:2px;
 }
-
 .compare{
   display:grid;grid-template-columns:1fr 1fr;gap:14px;
 }
@@ -270,7 +260,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
   line-height:1.6;
   color:#4a5565;
 }
-
 .dashboard-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px
 }
@@ -286,7 +275,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 .metric:nth-child(2) .num{color:var(--accent)}
 .metric:nth-child(3) .num{color:#0ea5e9}
 .metric:nth-child(4) .num{color:#f59e0b}
-
 .toolbar{display:flex;gap:8px;flex-wrap:wrap}
 .toolbar input{max-width:290px}
 .journal-list{display:grid;gap:10px}
@@ -295,7 +283,6 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 }
 .journal-card:hover{border-color:#d7dee8}
 .journal-meta{font-size:11px;color:var(--muted);margin-bottom:6px}
-
 .bar-wrap{margin:12px 0}
 .bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
 .bar{height:9px;background:#eef2f7;border-radius:999px;overflow:hidden}
@@ -314,11 +301,11 @@ button:hover,.file-label:hover{transform:translateY(-1px)}
 .bias-summary b{font-size:28px;color:var(--brand)}
 .bias-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:11px}
 .bias-legend span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;background:#14b8a6}
-.bias-legend span:nth-child(2)::before{background:#f59e0b}.bias-legend span:nth-child(3)::before{background:#ef4444}
+.bias-legend span:nth-child(2)::before{background:#f59e0b}
+.bias-legend span:nth-child(3)::before{background:#ef4444}
 canvas{max-width:100%;height:auto}
 footer{display:block;font-size:13px;font-weight:700;color:#46566c;margin-top:28px;padding:18px 14px;text-align:center;background:#fff;border:1px solid #dbe2ea;border-radius:14px;box-shadow:0 6px 18px rgba(30,64,175,.05)}
 .hidden{display:none !important}
-
 @media(max-width:780px){
   .wrap{padding:16px 12px 52px}
   .top{padding:20px;border-radius:22px;flex-direction:column}
@@ -328,14 +315,10 @@ footer{display:block;font-size:13px;font-weight:700;color:#46566c;margin-top:28p
   .header-actions{width:100%}
   .header-actions button{width:100%}
 }
-
-
 .danger-btn{color:#b91c1c;border-color:#fecaca;background:#fff7f7}
 .danger-btn:hover{background:#fef2f2}
 .delete-mini{padding:7px 10px;border-radius:10px;font-size:11px;color:#b91c1c;background:#fff7f7;border:1px solid #fecaca}
 .journal-actions{display:flex;justify-content:flex-end;margin-top:10px}
-
-
 .mobile-home,.bottom-nav{display:none}
 @media(max-width:780px){
   body{padding-bottom:86px;background:#f6f7fb}
@@ -412,7 +395,7 @@ footer{display:block;font-size:13px;font-weight:700;color:#46566c;margin-top:28p
   .bottom-nav button span{font-size:20px;line-height:20px}
   .bottom-nav button small{font-size:9px}
   .bottom-nav button.active{color:#5b5ff0}
-footer{display:block;margin:24px 4px 76px;padding:16px 12px;line-height:1.6;font-size:12px}
+  footer{display:block;margin:24px 4px 76px;padding:16px 12px;line-height:1.6;font-size:12px}
 }
 
 /* Warm field-journal theme */
@@ -519,11 +502,9 @@ button,.file-label{border-radius:11px}.primary{background:linear-gradient(135deg
   #dashboard{padding:34px 40px}.dashboard-grid{grid-template-columns:repeat(4,1fr)}.toolbar{display:grid;grid-template-columns:minmax(240px,1.4fr) minmax(200px,1fr) repeat(4,auto)}
   textarea{min-height:150px}.method-grid{grid-template-columns:repeat(3,1fr)}
 }
-
 @media(min-width:781px) and (max-width:1050px){
   .wrap{padding-left:22px;padding-right:22px}.mobile-home{grid-template-columns:1fr 1fr}.toolbar{grid-template-columns:1fr 1fr repeat(2,auto)}.mobile-recent{grid-template-columns:repeat(2,1fr)}
 }
-
 </style>
 </head>
 <body>
@@ -558,7 +539,6 @@ button,.file-label{border-radius:11px}.primary{background:linear-gradient(135deg
     </div>
   </div>
 
-  
   <section class="mobile-home" id="mobileHome">
     <div class="mobile-greeting">
       <div>
@@ -588,7 +568,7 @@ button,.file-label{border-radius:11px}.primary{background:linear-gradient(135deg
     <div id="mobileRecent" class="mobile-recent"></div>
   </section>
 
-<section class="card hero hidden" id="step1">
+  <section class="card hero hidden" id="step1">
     <div class="card-head">
       <div>
         <div class="kicker">TODAY'S RESEARCH</div>
@@ -757,10 +737,7 @@ button,.file-label{border-radius:11px}.primary{background:linear-gradient(135deg
   <footer>© 2026 metain.site. All rights reserved.</footer>
 </div>
 
-
-
 <script>
-
 window.RH = window.RH || {};
 RH.methods = [
  {id:"observation",name:"Observation",desc:"실제 행동과 상황을 본다",evidence:["behavior","context"],fit:["exploratory","descriptive","comparative"]},
@@ -784,7 +761,6 @@ RH.questionTypes = [
  {id:"explanatory",label:"설명",patterns:["왜","이유","원인","어떻게 발생"]},
  {id:"causal",label:"인과",patterns:["영향","효과","때문","증가시키","감소시키","관계가 있는가"]}
 ];
-
 
 window.RH = window.RH || {};
 RH.storage = {
@@ -935,7 +911,6 @@ RH.storage = {
    RH.dashboard.refresh();
  }
 };
-
 
 window.RH = window.RH || {};
 RH.state = {selected:new Set(), counterAnswers:new Map(), questionType:null, rqScore:0, biasScore:0, biasDimensions:[], methodFit:0, counterIndex:0};
@@ -1301,22 +1276,22 @@ RH.dashboard.printPDF=function(){
 };
 
 document.addEventListener("DOMContentLoaded",()=>RH.dashboard.refresh());
-
 </script>
+
 <script>
-  const _renderMethods = RH.app.renderMethods.bind(RH.app);
-  RH.app.renderMethods = function(){
-    _renderMethods();
-    const fit = Number(document.getElementById("methodFit")?.textContent || 0);
-    const ring = document.getElementById("scoreRing");
-    if(ring){
-      const deg = Math.max(0, Math.min(100, fit))*3.6;
-      ring.style.background = `conic-gradient(var(--brand) ${deg}deg,#e9edf5 ${deg}deg)`;
-    }
+const _renderMethods = RH.app.renderMethods.bind(RH.app);
+RH.app.renderMethods = function(){
+  _renderMethods();
+  const fit = Number(document.getElementById("methodFit")?.textContent || 0);
+  const ring = document.getElementById("scoreRing");
+  if(ring){
+    const deg = Math.max(0, Math.min(100, fit))*3.6;
+    ring.style.background = `conic-gradient(var(--brand) ${deg}deg,#e9edf5 ${deg}deg)`;
   }
+}
 </script>
-<script>
 
+<script>
 RH.mobile = {
  challenges:[
    "사람들은 엘리베이터 안에서 어디를 바라볼까?",
@@ -1379,16 +1354,15 @@ document.getElementById("installBtn")?.addEventListener("click",async()=>{
   deferredInstallPrompt=null;
   document.getElementById("installBtn").style.display="none";
 });
-window.addEventListener("appinstalled",()=>{const b=document.getElementById("installBtn");if(b)b.style.display="none"});
+window.addEventListener("appinstalled",()=>{
+  const b=document.getElementById("installBtn");
+  if(b)b.style.display="none";
+});
 
-if("serviceWorker" in navigator && location.protocol.startsWith("http")){
-  window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
-}
 document.addEventListener("DOMContentLoaded",()=>{
   RH.mobile.refresh();
   RH.mobile.home();
 });
-
 </script>
 </body>
 </html>
